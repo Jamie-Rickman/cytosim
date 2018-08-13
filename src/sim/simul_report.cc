@@ -1089,7 +1089,7 @@ void write(std::ostream& out, Single * obj, const char str[])
 /**
  Custom report function by Jamie-Li Rickman for: "Determinants of polar versus nematic organization in networks of dynamic microtubules and mitotic motors" published in 2018 By J. Roostalu, J. Rickman, C. Thomas, F. Nedelec and T. Surrey
  
- Export 'type' of singly and doubly-attached couples:
+ Export 'type' of bridging couples and attached couples:
     - Couples attached with both hands can form Hp, Hap, X, T and V links dependent on the geometry of the filaments they cross-link
     - Couples attached with one hand can form L or E links depending on whether they are bound on the lattice or the end of the filament.
  */

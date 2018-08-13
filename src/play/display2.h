@@ -14,6 +14,15 @@ class PointDisp;
  Point-like objects are rendered using OpenGL::Points and display-lists.
  All points are therefore displayed with the same size.
  */
+
+/**
+ NEW_COLOR_HAND_BY_LINK_TYPE is a style to display bridging couples colored according to the type of crosslink as described
+ in "Determinants of polar versus nematic organization in networks of dynamic microtubules and mitotic motors" published in
+ 2018 By J. Roostalu, J. Rickman, C. Thomas, F. Nedelec and T. Surrey
+ */
+#define NEW_COLOR_HAND_BY_LINK_TYPE 1
+
+
 class Display2 : public Display
 {
     ///display a ball

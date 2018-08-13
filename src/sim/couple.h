@@ -235,10 +235,10 @@ public:
     
     //--------------------------------------------------------------------------
 
-    /// return link type for doubly-attached couples
+    /// return link type for bridging couples
     int       whichLinkAA() const;
     
-    /// return link type for singly-attached couples
+    /// return link type for attached couples
     int       whichLinkAF() const;
 
 

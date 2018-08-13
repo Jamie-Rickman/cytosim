@@ -963,6 +963,16 @@ void Display2::displayACouples(CoupleSet const& set)
 
 void Display2::displayBCouples(CoupleSet const& set)
 {
+#if NEW_COLOR_HAND_BY_LINK_TYPE
+    // color key for different link types: (Hp : cyan, Hap: magenta, X : gray, T : yellow, V : yellow, ? : transparent)
+    gle_color_float transparent = gle_color_float(0,0,0,0);
+    gle_color_float yellow = gle_color_float(1,1,0,1);
+    gle_color_float magenta = gle_color_float(1,0,1,1);
+    gle_color_float cyan = gle_color_float(0,1,1,1);
+    gle_color_float gray = gle_color_float(0.5,0.5,0.5,1);
+    gle_color_float colorKey [6] = {cyan, magenta, gray, yellow, yellow, transparent};
+#endif
+    
     // display bridging couples
     if ( prop->point_size > 0 )
     {
@@ -974,8 +984,15 @@ void Display2::displayBCouples(CoupleSet const& set)
             if ( ( prop->couple_select & 8 ) && ( cx->cosAngle() > 0 ) )
                 continue;
             
+#if NEW_COLOR_HAND_BY_LINK_TYPE
+            int linkType = cx -> whichLinkAA();
+            colorKey[linkType].color();
+            gleVertex(cx->pos1());
+            gleVertex(cx->pos2());
+#else
             drawVertex(cx->pos1(), cx->fiber1(), cx->hand1()->prop->disp);
             drawVertex(cx->pos2(), cx->fiber2(), cx->hand2()->prop->disp);
+#endif
         }
         glEnd();
     }
@@ -994,8 +1011,15 @@ void Display2::displayBCouples(CoupleSet const& set)
             Vector xx = cx->pos1();
             Vector yy = cx->pos2();
             if (modulo) modulo->fold( yy, xx );
+#if NEW_COLOR_HAND_BY_LINK_TYPE
+            int linkType = cx -> whichLinkAA();
+            colorKey[linkType].color();
+            gleVertex(xx);
+            gleVertex(yy);
+#else
             drawLink(xx, cx->fiber1(), cx->hand1()->prop->disp,
                      yy, cx->fiber2(), cx->hand2()->prop->disp);
+#endif
         }
         glEnd();
     }
